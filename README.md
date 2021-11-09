@@ -2,7 +2,7 @@
 
 Konu Linki: [Konu](https://www.mmotutkunlari.com/konu/sub-dosyalarini-daha-rahat-gormeye-yarayan-program.11879/)
 Bana Ulaşın: [MmoTutkunları/AhmetTeyfik](https://www.mmotutkunlari.com/uye/ahmetteyfik.7300/)
-[![Video](https://img.youtube.com/vi/Qko47-9MR98/maxresdefault.jpg | width=100 )](https://www.youtube.com/watch?v=Qko47-9MR98)
+[![Video](https://img.youtube.com/vi/Qko47-9MR98/maxresdefault.jpg)](https://www.youtube.com/watch?v=Qko47-9MR98)
 
 ```diff
 + this text is highlighted in green
