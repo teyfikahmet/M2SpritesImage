@@ -1,6 +1,7 @@
 # Sub dosyalarını daha rahat görmeye yarayan program.
 
 ✔️ Konu Linki: [Konu](https://www.mmotutkunlari.com/konu/sub-dosyalarini-daha-rahat-gormeye-yarayan-program.11879/)
+
 📣 Bana Ulaşın: [MmoTutkunları/AhmetTeyfik](https://www.mmotutkunlari.com/uye/ahmetteyfik.7300/)
 
 ## 📺 Video
