@@ -7,7 +7,7 @@
     <ProjectGuid>{AA49EE03-C8C7-417C-AAE0-7A35CEF866B7}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>M2SpritesImage</RootNamespace>
-    <AssemblyName>M2SpritesImage</AssemblyName>
+    <AssemblyName>M2UiElementManager</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -24,7 +24,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>31671</ApplicationRevision>
-    <ApplicationVersion>1.1.2619.%2a</ApplicationVersion>
+    <ApplicationVersion>1.2.2619.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -66,6 +66,8 @@
     <PlatformTarget>x86</PlatformTarget>
     <LangVersion>7.3</LangVersion>
     <ErrorReport>prompt</ErrorReport>
+    <DocumentationFile>
+    </DocumentationFile>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>char_info_movespeed.ico</ApplicationIcon>
