@@ -117,10 +117,10 @@ namespace M2SpritesImage
             pictureBox1.Image = newbt;
             lastImage = newbt;
 
-            lastImage.MakeTransparent(Color.White);
+            /*lastImage.MakeTransparent(Color.White);
             System.IntPtr icH = lastImage.GetHicon();
             Icon ico = Icon.FromHandle(icH);
-            Icon = ico;
+            Icon = ico;*/
             
             ReLocateImageBox();
             return new Size(newbt.Width, newbt.Height);
