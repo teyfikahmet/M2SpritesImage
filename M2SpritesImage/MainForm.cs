@@ -269,8 +269,8 @@ namespace M2SpritesImage
                     DDSName = data.PicName,
                     Top = 0,
                     Right = 0,
-                    Left = 50,
-                    Bottom = 50,
+                    Left = 0,
+                    Bottom = 0,
                 }
             ).Get();
             lastFileName = data.FileName;
