@@ -1,0 +1,15 @@
+D:\WORK\TOOLS\M2SpritesImage\WpfApp1\bin\Debug\WpfApp1.exe.config
+D:\WORK\TOOLS\M2SpritesImage\WpfApp1\bin\Debug\WpfApp1.exe
+D:\WORK\TOOLS\M2SpritesImage\WpfApp1\bin\Debug\WpfApp1.pdb
+D:\WORK\TOOLS\M2SpritesImage\WpfApp1\obj\Debug\WpfApp1.csproj.AssemblyReference.cache
+D:\WORK\TOOLS\M2SpritesImage\WpfApp1\obj\Debug\MainWindow.g.cs
+D:\WORK\TOOLS\M2SpritesImage\WpfApp1\obj\Debug\App.g.cs
+D:\WORK\TOOLS\M2SpritesImage\WpfApp1\obj\Debug\WpfApp1_MarkupCompile.cache
+D:\WORK\TOOLS\M2SpritesImage\WpfApp1\obj\Debug\WpfApp1_MarkupCompile.lref
+D:\WORK\TOOLS\M2SpritesImage\WpfApp1\obj\Debug\MainWindow.baml
+D:\WORK\TOOLS\M2SpritesImage\WpfApp1\obj\Debug\WpfApp1.g.resources
+D:\WORK\TOOLS\M2SpritesImage\WpfApp1\obj\Debug\WpfApp1.Properties.Resources.resources
+D:\WORK\TOOLS\M2SpritesImage\WpfApp1\obj\Debug\WpfApp1.csproj.GenerateResource.cache
+D:\WORK\TOOLS\M2SpritesImage\WpfApp1\obj\Debug\WpfApp1.csproj.CoreCompileInputs.cache
+D:\WORK\TOOLS\M2SpritesImage\WpfApp1\obj\Debug\WpfApp1.exe
+D:\WORK\TOOLS\M2SpritesImage\WpfApp1\obj\Debug\WpfApp1.pdb

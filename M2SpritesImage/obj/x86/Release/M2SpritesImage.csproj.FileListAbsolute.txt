@@ -1,4 +1,3 @@
-D:\WORK\TOOLS\M2SpritesImage\M2SpritesImage\bin\x86\Release\DevIL.NET2.dll
 D:\WORK\TOOLS\M2SpritesImage\M2SpritesImage\obj\x86\Release\M2SpritesImage.csproj.AssemblyReference.cache
 D:\WORK\TOOLS\M2SpritesImage\M2SpritesImage\obj\x86\Release\M2SpritesImage.Properties.Resources.resources
 D:\WORK\TOOLS\M2SpritesImage\M2SpritesImage\obj\x86\Release\M2SpritesImage.csproj.GenerateResource.cache
@@ -6,8 +5,10 @@ D:\WORK\TOOLS\M2SpritesImage\M2SpritesImage\obj\x86\Release\M2SpritesImage.cspro
 D:\WORK\TOOLS\M2SpritesImage\M2SpritesImage\obj\x86\Release\M2SpritesImage.csproj.CopyComplete
 D:\WORK\TOOLS\M2SpritesImage\M2SpritesImage\obj\x86\Release\M2SpritesImage.MainForm.resources
 D:\WORK\TOOLS\M2SpritesImage\M2SpritesImage\obj\x86\Release\M2SpritesImage.nButton.resources
-D:\WORK\TOOLS\M2SpritesImage\M2SpritesImage\bin\x86\Release\M2UiElementManager.exe.config
-D:\WORK\TOOLS\M2SpritesImage\M2SpritesImage\bin\x86\Release\M2UiElementManager.exe
-D:\WORK\TOOLS\M2SpritesImage\M2SpritesImage\bin\x86\Release\M2UiElementManager.pdb
-D:\WORK\TOOLS\M2SpritesImage\M2SpritesImage\obj\x86\Release\M2UiElementManager.exe
-D:\WORK\TOOLS\M2SpritesImage\M2SpritesImage\obj\x86\Release\M2UiElementManager.pdb
+D:\WORK\TOOLS\M2SpritesImage\M2SpritesImage\bin\x86\Release\M2UiElementManagerV1.exe.config
+D:\WORK\TOOLS\M2SpritesImage\M2SpritesImage\bin\x86\Release\M2UiElementManagerV1.exe
+D:\WORK\TOOLS\M2SpritesImage\M2SpritesImage\bin\x86\Release\M2UiElementManagerV1.pdb
+D:\WORK\TOOLS\M2SpritesImage\M2SpritesImage\obj\x86\Release\M2UiElementManagerV1.exe
+D:\WORK\TOOLS\M2SpritesImage\M2SpritesImage\obj\x86\Release\M2UiElementManagerV1.pdb
+D:\WORK\TOOLS\M2SpritesImage\M2SpritesImage\bin\x86\Release\config.ini
+D:\WORK\TOOLS\M2SpritesImage\M2SpritesImage\obj\x86\Release\M2SpritesImage.NewForm.resources

@@ -5,9 +5,8 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using DevIL;
 using System.IO;
-
+using M2UiElementMaganerCore;
 
 namespace M2SpritesImage
 {
@@ -15,18 +14,18 @@ namespace M2SpritesImage
     {
         private OpenFileDialog Opendialog;
         private SaveFileDialog SaveFileDialog;
-        private string APP_TITLE = "M2SpritesImage";
+        private string APP_TITLE = "M2 Ui Element Manager V1";
         private string lastDirectory = null;
         private string lastFileName = null;
         private string fullPath = null;
-        private bool isInit = false;
         private ColorConverter converter = new ColorConverter();
         private Color BackGroundColor;
         private Bitmap lastImage;
         private TextBox MainPathTextBox;
         private string MainDir = null;
         private ToolTip ToolTip;
-        private IniFile configs;
+        private SubData LastSubData = null;
+        private bool isImageLoaded = false;
         public MainForm()
         {
             InitializeComponent();
@@ -35,7 +34,6 @@ namespace M2SpritesImage
             Text = APP_TITLE;
             Resize += Form1_Resize;
             BackGroundColor = (Color)converter.ConvertFromString("#222222");
-            configs = new IniFile("Conf.ini");
             
 
             MainPathTextBox = textBox1;
@@ -67,20 +65,27 @@ namespace M2SpritesImage
         private void Form1_Load(object sender, EventArgs e)
         {
             BackColor = BackGroundColor;
+            IniReader config = new IniReader("config.ini");
+            if (config.KeyExists("DefaultMainPath", "Config"))
+                SetMainPath(config.Read("DefaultMainPath", "Config"));
+
             //SetMainPath("D:\\WORK\\FILES\\MakePack\\etc\\ui");
             //LoadHardSubFile("D:\\WORK\\FILES\\MakePack\\etc\\ui\\public\\slotactiveeffect\\slot3\\05.sub");
         }
-        private void LoadImage(string fileName, SubReaderResult result)
+        private void LoadImage(string fileName, SubData result)
         {
             try
             {
-                Bitmap image = DevIL.DevIL.LoadBitmap(fileName);
-                
+                Bitmap bitmap = Core.LoadBitmap(fileName);
                 ReLocateImageBox();
-                Size btSize = DrawBurshes(image, result);
+                Size btSize = DrawBurshes(bitmap, result);
                 SetTitle(String.Format("{0} - {1} ({2}x{3})", lastFileName, APP_TITLE, btSize.Width, btSize.Height));
                 SetInfos(result, btSize.Width, btSize.Height);
                 SaveFileButton.Enabled = true;
+                isImageLoaded = true;
+                LastSubData = result;
+                LastSubData.FileName = fileName;
+                reloadTimer.Start();
             }
             catch(Exception e)
             {
@@ -88,7 +93,7 @@ namespace M2SpritesImage
             }
         }
 
-        private Size DrawBurshes(Bitmap image, SubReaderResult result)
+        private Size DrawBurshes(Bitmap image, SubData result)
         {
             int left = result.Left;
             int top = result.Top;
@@ -112,10 +117,10 @@ namespace M2SpritesImage
             pictureBox1.Image = newbt;
             lastImage = newbt;
 
-            /*lastImage.MakeTransparent(Color.White);
+            lastImage.MakeTransparent(Color.White);
             System.IntPtr icH = lastImage.GetHicon();
             Icon ico = Icon.FromHandle(icH);
-            Icon = ico;*/
+            Icon = ico;
             
             ReLocateImageBox();
             return new Size(newbt.Width, newbt.Height);
@@ -126,7 +131,15 @@ namespace M2SpritesImage
             Text = TitleName;
         }
 
-        private void SetInfos(SubReaderResult result, int width, int height)
+        private void SetFieldReadOnly(bool readOnly)
+        {
+            TopField.ReadOnly = readOnly;
+            LeftField.ReadOnly = readOnly;
+            BottomField.ReadOnly = readOnly;
+            RightField.ReadOnly = readOnly;
+        }
+
+        private void SetInfos(SubData result, int width, int height)
         {
             fileNameField.Text = lastFileName;
             DDSNameField.Text = result.DDSName;
@@ -136,6 +149,11 @@ namespace M2SpritesImage
             RightField.Text = result.Right.ToString();
             SizeField.Text = String.Format("{0}x{1}", width, height);
             FullPathField.Text = fullPath;
+            SetFieldReadOnly(false);
+            /*TopField.TextChanged += Field_TextChanged;
+            LeftField.TextChanged += Field_TextChanged;
+            RightField.TextChanged += Field_TextChanged;
+            BottomField.TextChanged += Field_TextChanged;*/
         }
 
         private void ReLocateImageBox()
@@ -170,8 +188,7 @@ namespace M2SpritesImage
         private void LoadSubFile(string subInner)
         {
             SubReader subReader = new SubReader(subInner);
-            SubReaderResult result = subReader.GetResult();
-            Console.Write(result);
+            SubData result = subReader.GetResult();
             string file_Name = String.Format("{0}\\{1}", MainDir, result.DDSName);
             if(!File.Exists(file_Name))
             {
@@ -194,8 +211,8 @@ namespace M2SpritesImage
             Opendialog.Filter = "SubImage (*.sub)|*.sub";
             if(Opendialog.ShowDialog() == DialogResult.OK)
             {
-                lastDirectory = System.IO.Path.GetDirectoryName(Opendialog.FileName);
-                lastFileName = System.IO.Path.GetFileName(Opendialog.FileName);
+                lastDirectory = Path.GetDirectoryName(Opendialog.FileName);
+                lastFileName = Path.GetFileName(Opendialog.FileName);
                 fullPath = Opendialog.FileName;
                 Stream stream = Opendialog.OpenFile();
                 StreamReader reader = new StreamReader(stream);
@@ -205,40 +222,82 @@ namespace M2SpritesImage
 
         private void SaveButtonClick()
         {
-            if (lastDirectory == null)
-                return;
-            SaveFileDialog.InitialDirectory = lastDirectory;
-            SaveFileDialog.Filter = "Png Dosyası|*.png|Dds Dosyası|*.dds";
-            SaveFileDialog.FileName = lastFileName.Replace(".sub", ".png");
+            if (lastDirectory != null)
+                SaveFileDialog.InitialDirectory = lastDirectory;
+            SaveFileDialog.Filter = "sub dosyası|*.sub|png dosyası|*.png|dds dosyası|*.dds";
+            SaveFileDialog.FileName = lastFileName;
             if (SaveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                string fullfilename = String.Format("{0}", SaveFileDialog.FileName);
                 if(SaveFileDialog.FilterIndex == 1)
-                    pictureBox1.Image.Save(fullfilename);
+                {
+                    if (LastSubData == null)
+                        return;
+
+                    lastDirectory = Path.GetDirectoryName(SaveFileDialog.FileName);
+                    fullPath = SaveFileDialog.FileName;
+                    FullPathField.Text = fullPath;
+                    string content = new SubMaker(LastSubData).Get();
+
+                    File.WriteAllText(SaveFileDialog.FileName, content);
+                }
                 else
-                    DevIL.DevIL.SaveBitmap(fullfilename, (Bitmap)pictureBox1.Image);
+                {
+                    string fullfilename = String.Format("{0}", SaveFileDialog.FileName);
+                    if (SaveFileDialog.FilterIndex == 1)
+                        pictureBox1.Image.Save(fullfilename);
+                    else
+                        Core.SaveBitmap(fullfilename, (Bitmap)pictureBox1.Image);
+                }
             }
+        }
+
+        private void NewButtonClick()
+        {
+            NewForm newForm = new NewForm();
+            newForm.ShowDialog();
+            NewFileData data = newForm.GetResult();
+            if (!data.FileName.EndsWith(".sub"))
+                data.FileName = data.FileName + ".sub";
+
+            if (string.IsNullOrEmpty(data.FileName) || string.IsNullOrEmpty(data.PicName))
+                return;
+
+            string result = new SubMaker(
+                new SubData()
+                {
+                    FileName = data.FileName,
+                    DDSName = data.PicName,
+                    Top = 0,
+                    Right = 0,
+                    Left = 50,
+                    Bottom = 50,
+                }
+            ).Get();
+            lastFileName = data.FileName;
+            LoadSubFile(result);
         }
 
         private void SetMainPath(string path)
         {
             if(!Directory.Exists(path))
             {
-                MessageBox.Show("Dizin Bulunamadı...", "ERROR");
-                OpenFolderDialog();
+                //MessageBox.Show("Dizin Bulunamadı... -> " + path, "ERROR");
+                //OpenFolderDialog();
                 return;
             }
+
             MainPathTextBox.Text = path;
             MainDir = path;
             OpenFileButton.Enabled = true;
+            newButton.Enabled = true;
         }
 
         private void OpenFolderDialog()
         {
             FolderBrowserDialog folderBrowser = new FolderBrowserDialog();
             folderBrowser.Description = "Ana dizini seç...";
-            if (System.IO.Directory.Exists("D:\\WORK\\FILES\\MakePack\\etc\\ui"))
-                folderBrowser.SelectedPath = "D:\\WORK\\FILES\\MakePack\\etc\\ui";
+            if (System.IO.Directory.Exists("D:\\WORK\\FILES\\fullbinary\\pack\\etc\\ymir work\\ui\\"))
+                folderBrowser.SelectedPath = "D:\\WORK\\FILES\\fullbinary\\pack\\etc\\ymir work\\ui\\";
             folderBrowser.ShowNewFolderButton = false;
             if (folderBrowser.ShowDialog() == DialogResult.OK)
             {
@@ -265,6 +324,47 @@ namespace M2SpritesImage
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             System.Diagnostics.Process.Start("https://www.mmotutkunlari.com/uye/ahmetteyfik.7300/");
+        }
+
+        private void newButton_Click(object sender, EventArgs e)
+        {
+            NewButtonClick();
+        }
+
+        private void Field_TextChanged(object sender, EventArgs e)
+        {
+           
+        }
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            if (!isImageLoaded)
+                return;
+            TextBox snd = sender as TextBox;
+            SubData data = LastSubData;
+            ReloadButton.Enabled = false;
+            SetFieldReadOnly(true);
+            int number;
+
+            if (int.TryParse(TopField.Text, out number))
+                data.Top = number;
+
+            if (int.TryParse(BottomField.Text, out number))
+                data.Bottom = number;
+
+            if (int.TryParse(LeftField.Text, out number))
+                data.Left = number;
+
+            if (int.TryParse(RightField.Text, out number))
+                data.Right = number;
+
+            isImageLoaded = false;
+            LoadImage(data.FileName, data);
+        }
+
+        private void reloadTimer_Tick(object sender, EventArgs e)
+        {
+            ReloadButton.Enabled = true;
+            SetFieldReadOnly(false);
         }
     }
 }

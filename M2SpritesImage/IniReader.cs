@@ -1,12 +1,11 @@
-﻿using System.Text;
-using System.IO;
+﻿using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
-
+using System.Text;
 
 namespace M2SpritesImage
 {
-    class IniFile
+    class IniReader
     {
         string Path;
         string EXE = Assembly.GetExecutingAssembly().GetName().Name;
@@ -17,7 +16,7 @@ namespace M2SpritesImage
         [DllImport("kernel32", CharSet = CharSet.Unicode)]
         static extern int GetPrivateProfileString(string Section, string Key, string Default, StringBuilder RetVal, int Size, string FilePath);
 
-        public IniFile(string IniPath = null)
+        public IniReader(string IniPath = null)
         {
             Path = new FileInfo(IniPath ?? EXE + ".ini").FullName;
         }

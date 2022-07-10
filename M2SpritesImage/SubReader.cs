@@ -7,7 +7,7 @@ namespace M2SpritesImage
 {
     class SubReader
     {
-        private SubReaderResult result = new SubReaderResult();
+        private SubData result = new SubData();
         public SubReader(string fileText)
         {
             Match m;
@@ -34,20 +34,21 @@ namespace M2SpritesImage
             result.Bottom = Int32.Parse(m.Value.Replace("bottom ", ""));
         }
 
-        public SubReaderResult GetResult()
+        public SubData GetResult()
         {
             return result;
         }
 
     }
 
-    class SubReaderResult
+    class SubData
     {
         public int Top { get; set; }
         public int Left { get; set; }
         public int Right { get; set; }
         public int Bottom { get; set; }
         public string DDSName { get; set; }
+        public string FileName { get; set; }
 
     }
 }
