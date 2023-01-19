@@ -35,8 +35,8 @@ namespace M2SpritesImage
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.newButton = new System.Windows.Forms.Button();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.ChangePathButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -44,6 +44,7 @@ namespace M2SpritesImage
             this.OpenFileButton = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.ReloadButton = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.FullPathField = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -60,11 +61,12 @@ namespace M2SpritesImage
             this.DDSNameField = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.fileNameField = new System.Windows.Forms.TextBox();
-            this.ReloadButton = new System.Windows.Forms.Button();
             this.reloadTimer = new System.Windows.Forms.Timer(this.components);
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -83,9 +85,9 @@ namespace M2SpritesImage
             this.panel1.AutoScroll = true;
             this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Location = new System.Drawing.Point(0, 34);
+            this.panel1.Location = new System.Drawing.Point(0, 53);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(866, 490);
+            this.panel1.Size = new System.Drawing.Size(866, 471);
             this.panel1.TabIndex = 2;
             // 
             // pictureBox1
@@ -103,8 +105,9 @@ namespace M2SpritesImage
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.Transparent;
+            this.panel2.Controls.Add(this.button1);
+            this.panel2.Controls.Add(this.pictureBox2);
             this.panel2.Controls.Add(this.newButton);
-            this.panel2.Controls.Add(this.linkLabel1);
             this.panel2.Controls.Add(this.ChangePathButton);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.textBox1);
@@ -113,8 +116,18 @@ namespace M2SpritesImage
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1033, 34);
+            this.panel2.Size = new System.Drawing.Size(1033, 53);
             this.panel2.TabIndex = 3;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::M2SpritesImage.Properties.Resources.E4Bi_BFVgAIzRRw;
+            this.pictureBox2.Location = new System.Drawing.Point(944, 0);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(89, 50);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 7;
+            this.pictureBox2.TabStop = false;
             // 
             // newButton
             // 
@@ -123,7 +136,7 @@ namespace M2SpritesImage
             this.newButton.FlatAppearance.BorderSize = 0;
             this.newButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.newButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.newButton.Location = new System.Drawing.Point(84, 4);
+            this.newButton.Location = new System.Drawing.Point(3, 27);
             this.newButton.Name = "newButton";
             this.newButton.Size = new System.Drawing.Size(75, 23);
             this.newButton.TabIndex = 6;
@@ -131,27 +144,15 @@ namespace M2SpritesImage
             this.newButton.UseVisualStyleBackColor = false;
             this.newButton.Click += new System.EventHandler(this.newButton_Click);
             // 
-            // linkLabel1
-            // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.LinkColor = System.Drawing.Color.White;
-            this.linkLabel1.Location = new System.Drawing.Point(730, 10);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(203, 13);
-            this.linkLabel1.TabIndex = 5;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "mmotutkunlari.com/uye/ahmetteyfik.7300";
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
-            // 
             // ChangePathButton
             // 
             this.ChangePathButton.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ChangePathButton.FlatAppearance.BorderSize = 0;
             this.ChangePathButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ChangePathButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.ChangePathButton.Location = new System.Drawing.Point(619, 4);
+            this.ChangePathButton.Location = new System.Drawing.Point(793, 5);
             this.ChangePathButton.Name = "ChangePathButton";
-            this.ChangePathButton.Size = new System.Drawing.Size(105, 23);
+            this.ChangePathButton.Size = new System.Drawing.Size(105, 22);
             this.ChangePathButton.TabIndex = 4;
             this.ChangePathButton.Text = "Ana Dizini Seç";
             this.ChangePathButton.UseVisualStyleBackColor = false;
@@ -162,7 +163,7 @@ namespace M2SpritesImage
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label1.Location = new System.Drawing.Point(285, 10);
+            this.label1.Location = new System.Drawing.Point(198, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(55, 13);
             this.label1.TabIndex = 3;
@@ -170,11 +171,11 @@ namespace M2SpritesImage
             // 
             // textBox1
             // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(350, 4);
+            this.textBox1.Location = new System.Drawing.Point(259, 6);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(263, 23);
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(528, 21);
             this.textBox1.TabIndex = 2;
             // 
             // SaveFileButton
@@ -184,7 +185,7 @@ namespace M2SpritesImage
             this.SaveFileButton.FlatAppearance.BorderSize = 0;
             this.SaveFileButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SaveFileButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.SaveFileButton.Location = new System.Drawing.Point(165, 4);
+            this.SaveFileButton.Location = new System.Drawing.Point(84, 3);
             this.SaveFileButton.Name = "SaveFileButton";
             this.SaveFileButton.Size = new System.Drawing.Size(108, 23);
             this.SaveFileButton.TabIndex = 1;
@@ -200,7 +201,7 @@ namespace M2SpritesImage
             this.OpenFileButton.FlatAppearance.BorderSize = 0;
             this.OpenFileButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.OpenFileButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.OpenFileButton.Location = new System.Drawing.Point(3, 4);
+            this.OpenFileButton.Location = new System.Drawing.Point(3, 3);
             this.OpenFileButton.Name = "OpenFileButton";
             this.OpenFileButton.Size = new System.Drawing.Size(75, 23);
             this.OpenFileButton.TabIndex = 0;
@@ -247,6 +248,21 @@ namespace M2SpritesImage
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Bilgi";
+            // 
+            // ReloadButton
+            // 
+            this.ReloadButton.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.ReloadButton.Enabled = false;
+            this.ReloadButton.FlatAppearance.BorderSize = 0;
+            this.ReloadButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ReloadButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.ReloadButton.Location = new System.Drawing.Point(8, 439);
+            this.ReloadButton.Name = "ReloadButton";
+            this.ReloadButton.Size = new System.Drawing.Size(150, 23);
+            this.ReloadButton.TabIndex = 7;
+            this.ReloadButton.Text = "Yenile";
+            this.ReloadButton.UseVisualStyleBackColor = false;
+            this.ReloadButton.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // label9
             // 
@@ -400,25 +416,24 @@ namespace M2SpritesImage
             this.fileNameField.Size = new System.Drawing.Size(150, 20);
             this.fileNameField.TabIndex = 0;
             // 
-            // ReloadButton
-            // 
-            this.ReloadButton.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ReloadButton.Enabled = false;
-            this.ReloadButton.FlatAppearance.BorderSize = 0;
-            this.ReloadButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ReloadButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.ReloadButton.Location = new System.Drawing.Point(8, 439);
-            this.ReloadButton.Name = "ReloadButton";
-            this.ReloadButton.Size = new System.Drawing.Size(150, 23);
-            this.ReloadButton.TabIndex = 7;
-            this.ReloadButton.Text = "Yenile";
-            this.ReloadButton.UseVisualStyleBackColor = false;
-            this.ReloadButton.Click += new System.EventHandler(this.button1_Click_1);
-            // 
             // reloadTimer
             // 
             this.reloadTimer.Interval = 1500;
             this.reloadTimer.Tick += new System.EventHandler(this.reloadTimer_Tick);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.button1.Enabled = false;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.button1.Location = new System.Drawing.Point(84, 27);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(108, 23);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "Farklı Kaydet";
+            this.button1.UseVisualStyleBackColor = false;
             // 
             // MainForm
             // 
@@ -440,6 +455,7 @@ namespace M2SpritesImage
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel3.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -476,10 +492,11 @@ namespace M2SpritesImage
         private System.Windows.Forms.TextBox SizeField;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox FullPathField;
-        private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Button newButton;
         private System.Windows.Forms.Button ReloadButton;
         private System.Windows.Forms.Timer reloadTimer;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Button button1;
     }
 }
 

@@ -15,7 +15,7 @@ namespace M2SpritesImage
         private OpenFileDialog Opendialog;
         private SaveFileDialog SaveFileDialog;
         private string APP_TITLE = "M2 Ui Element Manager V1";
-        private string lastDirectory = null;
+        private string lastDirectory = null, lastSaveDirectory = null;
         private string lastFileName = null;
         private string fullPath = null;
         private ColorConverter converter = new ColorConverter();
@@ -26,6 +26,7 @@ namespace M2SpritesImage
         private ToolTip ToolTip;
         private SubData LastSubData = null;
         private bool isImageLoaded = false;
+        IniReader config = new IniReader("config.ini");
         public MainForm()
         {
             InitializeComponent();
@@ -34,7 +35,6 @@ namespace M2SpritesImage
             Text = APP_TITLE;
             Resize += Form1_Resize;
             BackGroundColor = (Color)converter.ConvertFromString("#222222");
-            
 
             MainPathTextBox = textBox1;
 
@@ -65,7 +65,6 @@ namespace M2SpritesImage
         private void Form1_Load(object sender, EventArgs e)
         {
             BackColor = BackGroundColor;
-            IniReader config = new IniReader("config.ini");
             if (config.KeyExists("DefaultMainPath", "Config"))
                 SetMainPath(config.Read("DefaultMainPath", "Config"));
 
@@ -208,6 +207,11 @@ namespace M2SpritesImage
                 LoadImage(Opendialog.FileName);
             }*/
 
+            if (lastDirectory == null)
+                lastDirectory = MainDir;
+
+            Opendialog.InitialDirectory = lastDirectory;
+
             Opendialog.Filter = "SubImage (*.sub)|*.sub";
             if(Opendialog.ShowDialog() == DialogResult.OK)
             {
@@ -222,8 +226,8 @@ namespace M2SpritesImage
 
         private void SaveButtonClick()
         {
-            if (lastDirectory != null)
-                SaveFileDialog.InitialDirectory = lastDirectory;
+            if (lastSaveDirectory != null)
+                SaveFileDialog.InitialDirectory = lastSaveDirectory;
             SaveFileDialog.Filter = "sub dosyası|*.sub|png dosyası|*.png|dds dosyası|*.dds";
             SaveFileDialog.FileName = lastFileName;
             if (SaveFileDialog.ShowDialog() == DialogResult.OK)
@@ -233,7 +237,7 @@ namespace M2SpritesImage
                     if (LastSubData == null)
                         return;
 
-                    lastDirectory = Path.GetDirectoryName(SaveFileDialog.FileName);
+                    lastSaveDirectory = Path.GetDirectoryName(SaveFileDialog.FileName);
                     fullPath = SaveFileDialog.FileName;
                     FullPathField.Text = fullPath;
                     string content = new SubMaker(LastSubData).Get();
@@ -285,6 +289,8 @@ namespace M2SpritesImage
                 //OpenFolderDialog();
                 return;
             }
+
+            config.Write("DefaultMainPath", path, "Config");
 
             MainPathTextBox.Text = path;
             MainDir = path;

@@ -72,7 +72,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>char_info_movespeed.ico</ApplicationIcon>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevIL.NET2, Version=1.1.2619.31671, Culture=neutral, processorArchitecture=x86">
@@ -131,9 +131,6 @@
       <Link>.editorconfig</Link>
     </None>
     <None Include="app.config" />
-    <None Include="config.ini">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -158,6 +155,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="char_info_movespeed.ico" />
+    <Content Include="favicon.ico" />
+    <None Include="Resources\E4Bi_BFVgAIzRRw.jpg" />
     <None Include="Resources\button_hover.png" />
     <None Include="Resources\button_down.png" />
     <None Include="Resources\button_bg.png" />

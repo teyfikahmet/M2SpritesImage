@@ -11,5 +11,4 @@ D:\WORK\TOOLS\M2SpritesImage\M2SpritesImage\bin\x86\Debug\M2UiElementManagerV1.e
 D:\WORK\TOOLS\M2SpritesImage\M2SpritesImage\bin\x86\Debug\M2UiElementManagerV1.pdb
 D:\WORK\TOOLS\M2SpritesImage\M2SpritesImage\obj\x86\Debug\M2UiElementManagerV1.exe
 D:\WORK\TOOLS\M2SpritesImage\M2SpritesImage\obj\x86\Debug\M2UiElementManagerV1.pdb
-D:\WORK\TOOLS\M2SpritesImage\M2SpritesImage\bin\x86\Debug\config.ini
 D:\WORK\TOOLS\M2SpritesImage\M2SpritesImage\obj\x86\Debug\M2SpritesImage.NewForm.resources
